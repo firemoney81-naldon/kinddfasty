@@ -1,23 +1,575 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "K5 유지비 완벽 분석: 2026년 최신 기준으로 1년 비용 계산",
+      "url": "https://www.yourdomain.com/k5-maintenance-cost-analysis",
+      "description": "2026년 최신 기준으로 K5 유지비를 완벽 분석합니다. K5 하이브리드, 1.6 터보, LPG 모델의 연비, 세금, 보험료, 정비 비용을 비교하여 K5 유지비 계산 결과를 실시간으로 확인하세요.",
+      "mainEntity": {
+        "@type": "Service",
+        "name": "K5 유지비 계산 서비스",
+        "serviceType": "Vehicle Maintenance Cost Analysis",
+        "provider": {
+          "@type": "Organization",
+          "name": "K5 유지비 분석 전문가 그룹"
+        },
+        "areaServed": "대한민국",
+        "keywords": "K5 유지비, K5 유지비 계산, K5 연비, K5 세금, K5 보험료, K5 단점, K5 장점, K5 하이브리드 유지비, K5 1.6 터보 유지비, K5 LPG 유지비"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "K5 유지비 계산 시 가장 큰 비중을 차지하는 항목은 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "K5 유지비에서 가장 큰 비중을 차지하는 것은 **유류비(주유비)**와 **자동차보험료**입니다. 특히 유류비는 운전자의 연간 주행거리와 K5 모델(하이브리드, 1.6 터보, LPG)의 연비에 따라 크게 달라집니다. K5 하이브리드 모델은 연비 효율이 높아 유류비 부담을 크게 줄일 수 있으며, 1.6 터보 모델은 상대적으로 주행 성능이 우수한 대신 연비가 낮아 유류비가 더 발생할 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "K5 하이브리드 모델이 1.6 터보 모델보다 유지비가 저렴한가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네, 일반적인 조건에서 K5 하이브리드 모델이 1.6 터보 모델보다 유지비가 저렴합니다. K5 하이브리드는 **연비 효율이 뛰어나** 유류비 절감 효과가 크며, **세금 감면 혜택**도 받을 수 있습니다. 반면 K5 1.6 터보는 차량 가격이 상대적으로 저렴할 수 있으나 연비가 낮고, 터보 엔진 특성상 정기적인 관리가 필요할 수 있습니다. K5 유지비 계산 시 이 두 모델의 장단점을 명확히 비교해야 합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "K5 유지비 절약을 위한 팁에는 어떤 것들이 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "K5 유지비 절약을 위해 다음 사항을 고려해야 합니다. 첫째, **다이렉트 자동차보험 비교**를 통해 최저가 보험료를 찾습니다. 둘째, **운전 습관을 개선**하여 연비를 높입니다. 셋째, **마일리지 특약**이나 **첨단 안전장치 할인 특약** 등 K5에 적용 가능한 다양한 보험 할인 혜택을 빠짐없이 확인합니다. 마지막으로, K5 정비 비용을 절감하기 위해 공식 서비스 센터 외에 전문적인 협력 업체를 이용하는 것도 방법입니다."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #0A477D; /* 짙은 네이비 블루 */
+            --secondary-color: #2F90B9; /* 스카이 블루 */
+            --accent-color: #38C7A0; /* 에메랄드 그린 (절약 강조) */
+            --text-color: #333;
+            --bg-light: #F7F9FC; /* 부드러운 배경 */
+            --bg-highlight: #E8F5FF; /* 하이라이트 배경 */
+            --btn-cta: #FF6B6B; /* 강렬한 CTA 레드 */
+            --shadow-subtle: 0 4px 12px rgba(0,0,0,0.05);
+            --border-radius-main: 12px;
+        }
+
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        /* Base Styles */
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: var(--text-color); line-height: 1.8; font-size: 16px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background-color: #fff; padding: 15px 0; border-bottom: 1px solid #eee; box-shadow: var(--shadow-subtle); }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        header h1 { margin: 0; font-size: 1.8em; color: var(--primary-color); font-weight: 900; }
+        header h1 a { text-decoration: none; color: inherit; }
+
+        /* Hero Section */
+        .hero { background-color: var(--primary-color); color: #fff; text-align: center; padding: 80px 20px 40px; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 900; line-height: 1.3; }
+        .hero p { font-size: 1.4em; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
+
+        /* CTA Button */
+        .cta-btn { background-color: var(--btn-cta); color: #fff; padding: 18px 45px; font-size: 1.5em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; box-shadow: 0 6px 15px rgba(255,107,107,0.4); text-decoration: none; display: inline-block; width: 100%; box-sizing: border-box; }
+        .cta-btn:hover { background-color: #FF4A4A; transform: translateY(-2px); }
+
+        /* Comparison Form Box */
+        .compare-form-box { background-color: #fff; padding: 30px; border-radius: var(--border-radius-main); box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-top: -60px; position: relative; z-index: 10; border: 3px solid var(--accent-color); }
+        .compare-form-box h2 { color: var(--primary-color); text-align: center; margin-bottom: 25px; font-size: 2em; font-weight: 700; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-color); font-size: 0.95em; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1em; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--secondary-color); outline: none; box-shadow: 0 0 5px rgba(47, 144, 185, 0.3); }
+
+        /* Content Sections */
+        .content-section { padding: 80px 0; margin-top: 20px; }
+        .content-section h2 { font-size: 2.8em; color: var(--secondary-color); text-align: center; margin-bottom: 50px; font-weight: 700; position: relative; }
+        .content-section h2::after { content: ''; display: block; width: 80px; height: 4px; background-color: var(--accent-color); margin: 15px auto 0; border-radius: 2px; }
+        .content-section h3 { font-size: 1.8em; color: var(--primary-color); margin-top: 40px; margin-bottom: 15px; border-left: 5px solid var(--accent-color); padding-left: 15px; font-weight: 700; }
+        .content-section h4 { font-size: 1.5em; color: var(--primary-color); margin-top: 30px; margin-bottom: 10px; font-weight: 600; }
+
+        /* Feature Grid */
+        .feature-grid { display: flex; flex-wrap: wrap; justify-content: space-between; text-align: center; margin-top: 40px; }
+        .feature-grid .item { width: calc(33.33% - 40px); margin: 20px 10px; padding: 30px; background-color: #fff; border-radius: var(--border-radius-main); box-shadow: var(--shadow-subtle); transition: transform 0.3s; border-top: 5px solid var(--secondary-color); }
+        .feature-grid .item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .feature-grid .item h3 { font-size: 1.4em; color: var(--primary-color); margin-top: 15px; margin-bottom: 10px; border-left: none; padding-left: 0; }
+        .feature-grid .item p { font-size: 1em; line-height: 1.6; color: #555; }
+        .icon { width: 60px; height: 60px; margin-bottom: 15px; color: var(--secondary-color); font-size: 3em; display: inline-block; }
+
+        /* Information Box */
+        .info-box { background-color: var(--bg-highlight); padding: 30px; border-radius: 10px; margin: 30px 0; border-left: 6px solid var(--secondary-color); }
+        .info-box p { margin: 0; font-size: 1.1em; color: #444; }
+
+        /* Data Visualization Table */
+        .data-table-container { overflow-x: auto; margin: 40px 0; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; box-shadow: var(--shadow-subtle); border-radius: 8px; overflow: hidden; }
+        .data-table caption { font-size: 1.3em; font-weight: 700; color: var(--primary-color); padding: 15px 0; }
+        .data-table th, .data-table td { padding: 15px; border: 1px solid #f0f0f0; }
+        .data-table thead tr { background-color: var(--secondary-color); color: #fff; text-align: center; }
+        .data-table tbody tr:nth-child(even) { background-color: #f9f9f9; }
+        .data-table tbody tr:hover { background-color: #f1f1f1; }
+
+        /* FAQ Section */
+        .faq-item { background-color: #fff; border-radius: 8px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .faq-item h3 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px; margin: 0; font-size: 1.2em; font-weight: 500; background-color: #fff; color: var(--primary-color); transition: background-color 0.3s; }
+        .faq-item h3:hover { background-color: #f5f5f5; }
+        .faq-item h3 span.toggle-icon { font-size: 1.5em; color: var(--accent-color); transition: transform 0.3s; font-weight: 300; }
+        .faq-item.active h3 span.toggle-icon { transform: rotate(45deg); color: var(--btn-cta); }
+        .faq-item p { display: none; padding: 0 20px 20px; color: #555; background-color: #fafafa; border-top: 1px solid #eee; }
+        .faq-item.active p { display: block; }
+
+        /* Keyword List */
+        .keyword-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+        .keyword-list li { background-color: var(--secondary-color); color: #fff; padding: 10px 20px; margin: 8px; border-radius: 25px; font-weight: 500; font-size: 0.95em; transition: background-color 0.3s; }
+        .keyword-list li:hover { background-color: var(--primary-color); }
+
+        /* External Links */
+        .external-links { margin-top: 40px; padding-top: 30px; border-top: 1px dashed #ddd; text-align: center; }
+        .external-links ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+        .external-links li { margin: 10px 15px; }
+        .external-links li a { color: var(--primary-color); text-decoration: none; font-weight: 500; font-size: 1em; display: inline-block; padding: 5px 10px; border: 1px solid var(--secondary-color); border-radius: 5px; transition: background-color 0.3s, color 0.3s; }
+        .external-links li a:hover { background-color: var(--secondary-color); color: #fff; }
+
+        /* Footer */
+        footer { background-color: var(--primary-color); color: #fff; text-align: center; padding: 40px 20px; font-size: 0.9em; border-top: 5px solid var(--accent-color); }
+        footer a { color: #fff; text-decoration: underline; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+
+        /* Image Styling */
+        .main-image { width: 100%; height: auto; border-radius: var(--border-radius-main); box-shadow: var(--shadow-subtle); margin-top: 20px; }
+        .content-image-right { float: right; margin-left: 20px; margin-bottom: 20px; max-width: 40%; border-radius: var(--border-radius-main); box-shadow: var(--shadow-subtle); }
+        .content-image-left { float: left; margin-right: 20px; margin-bottom: 20px; max-width: 40%; border-radius: var(--border-radius-main); box-shadow: var(--shadow-subtle); }
+
+        /* Mobile Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .compare-form-box { margin-top: 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .content-section h2 { font-size: 2em; }
+            .feature-grid .item { width: calc(50% - 30px); }
+            .content-image-right, .content-image-left { float: none; max-width: 100%; margin: 20px 0; }
+        }
+        @media (max-width: 600px) {
+            .feature-grid .item { width: 100%; }
+            .cta-btn { font-size: 1.3em; padding: 15px 30px; }
+            .keyword-list { justify-content: flex-start; }
+            .keyword-list li { margin: 5px; font-size: 0.9em; }
+            .external-links li { margin: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="/">K5 유지비 완벽 분석: 2026년 최신 기준으로 1년 비용 계산</a></h1>
+            <nav>
+                <!-- Nav elements for internal linking (e.g., #maintenance-tips, #faq-section) -->
+            </nav>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section class="hero">
+            <div class="container">
+                <h1>K5 유지비, 1분 안에 정확하게 계산하세요.</h1>
+                <p>2026년 최신 기준으로 K5 모델별(하이브리드, 1.6 터보, LPG) 1년 유지비용을 상세하게 분석해 드립니다.</p>
+            </div>
+            <div class="container">
+                <div class="compare-form-box">
+                    <h2>K5 유지비 계산기: 모델별 실시간 견적 요청</h2>
+                    <p style="text-align: center; color: #555; margin-bottom: 30px;">간단한 정보 입력으로 K5 모델의 정확한 1년 예상 유지비를 확인하세요. (최소 7개 항목 입력)</p>
+                    <form action="#" method="post">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="car-model">K5 모델 선택 <span style="color:red;">*</span></label>
+                                <select id="car-model" name="car-model" required>
+                                    <option value="">K5 모델 선택</option>
+                                    <option value="k5-hybrid">K5 하이브리드</option>
+                                    <option value="k5-1.6t">K5 1.6 터보</option>
+                                    <option value="k5-2.0n">K5 2.0 가솔린</option>
+                                    <option value="k5-lpg">K5 LPi (LPG)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="model-year">차량 연식 <span style="color:red;">*</span></label>
+                                <select id="model-year" name="model-year" required>
+                                    <option value="">연식 선택</option>
+                                    <option value="2026">2026년형 (신차)</option>
+                                    <option value="2025">2025년형</option>
+                                    <option value="2024">2024년형</option>
+                                    <option value="2023">2023년형</option>
+                                    <option value="2022">2022년형</option>
+                                    <option value="2021">2021년형</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="annual-mileage">연간 주행거리 (km) <span style="color:red;">*</span></label>
+                                <select id="annual-mileage" name="annual-mileage" required>
+                                    <option value="">주행거리 선택</option>
+                                    <option value="5000">5,000 km 이하</option>
+                                    <option value="10000">10,000 km</option>
+                                    <option value="15000">15,000 km (평균)</option>
+                                    <option value="20000">20,000 km 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuel-price-gas">현재 가솔린 가격 (원/L)</label>
+                                <input type="number" id="fuel-price-gas" name="fuel-price-gas" value="1700" placeholder="1,700" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuel-price-lpg">현재 LPG 가격 (원/L)</label>
+                                <input type="number" id="fuel-price-lpg" name="fuel-price-lpg" value="950" placeholder="950" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="driver-age">운전자 연령 기준</label>
+                                <select id="driver-age" name="driver-age">
+                                    <option value="">선택</option>
+                                    <option value="20">만 20세 이상</option>
+                                    <option value="26">만 26세 이상</option>
+                                    <option value="30">만 30세 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">이름 (견적 발송용) <span style="color:red;">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="실명 입력" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">연락처 <span style="color:red;">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="'-'없이 숫자만 입력" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="cta-btn">K5 유지비 상세 계산 및 비교 시작</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="comparison-advantage">
+            <div class="container">
+                <h2>K5 유지비 완벽 분석: 모델별 장단점과 2026년 비용 변화</h2>
+
+                <p style="text-align: center; font-size: 1.1em; color: #555;">K5는 세련된 디자인과 준수한 성능으로 오랜 기간 인기를 끌어온 중형 세단의 대표주자입니다. 하지만 K5 유지비용은 단순히 차량 가격이나 연비만으로 결정되지 않습니다. **K5 유지비 계산**을 위해서는 **K5 장점**과 **K5 단점**을 고려한 상세한 분석이 필요합니다. 2026년 최신 기준으로 K5 유지비를 구성하는 핵심 요소들을 면밀히 살펴보고, **K5 저렴한곳**을 찾는 노하우를 공개합니다.</p>
+
+                <div class="info-box">
+                    <p><strong>SEO 전문가의 조언:</strong> 네이버 검색 엔진은 사용자 질의 의도를 정확히 파악하여 전문적인 정보를 제공하는 웹페이지를 선호합니다. 'K5 유지비' 키워드는 단순히 가격 비교를 넘어, 모델별 장단점, 연비, 보험료, 세금 등을 종합적으로 알고 싶어 하는 의도가 강합니다. 상세한 데이터를 기반으로 한 분석은 사용자 만족도와 체류시간을 높여 SEO에 유리합니다.</p>
+                </div>
+
+                <h3>1. K5 유지비 핵심 구성 요소: 연비, 세금, 보험료, 정비 비용</h3>
+                <p>K5의 1년 유지비는 크게 네 가지 항목으로 나눌 수 있습니다. 차량을 구매하기 전에 이 네 가지 항목의 **예상 비용**을 정확하게 계산해야 장기적인 부담을 줄일 수 있습니다. 특히 2026년에는 유가 변동성, 보험료 할인 특약 확대, 부품 가격 변화 등이 K5 유지비에 영향을 미칠 것입니다.</p>
+
+                <div class="feature-grid">
+                    <div class="item">
+                        <span class="icon">⛽</span>
+                        <h3>유류비 (연비)</h3>
+                        <p>K5 유지비 중 가장 변동성이 크며, 운전 습관과 모델(하이브리드/가솔린/LPG)에 따라 차이가 심합니다. K5 하이브리드 모델은 압도적인 연비로 장거리 운전자에게 유리합니다.</p>
+                    </div>
+                    <div class="item">
+                        <span class="icon">💰</span>
+                        <h3>자동차 세금</h3>
+                        <p>K5의 배기량(1.6L 또는 2.0L)에 따라 매년 부과되는 금액입니다. 연식이 지날수록 세금이 감소하는 구조이며, 하이브리드 모델은 세금 감면 혜택을 받을 수 있습니다.</p>
+                    </div>
+                    <div class="item">
+                        <span class="icon">🛡️</span>
+                        <h3>자동차 보험료</h3>
+                        <p>운전자의 나이, 경력, 사고 이력과 함께 차량 모델별 등급에 따라 산출됩니다. K5는 대중적인 모델로 보험료가 안정적인 편이지만, 다이렉트 비교를 통해 최저가를 찾는 것이 중요합니다.</p>
+                    </div>
+                    <div class="item">
+                        <span class="icon">⚙️</span>
+                        <h3>정비/수리 비용</h3>
+                        <p>소모품 교환 비용과 고장 시 수리비용입니다. K5 1.6 터보 모델은 터보차저 관리, 하이브리드 모델은 배터리 관리 등 모델별 특성을 고려해야 합니다.</p>
+                    </div>
+                </div>
+
+                <h3>2. K5 모델별 유지비 비교 분석: 하이브리드 vs. 1.6 터보 vs. LPG</h3>
+                <p>K5는 1.6 터보, 2.0 가솔린, 하이브리드, LPG 등 다양한 파워트레인을 제공하여 소비자의 선택 폭이 넓습니다. K5 유지비 분석 시 어떤 모델을 선택하느냐에 따라 연간 수십만 원에서 백만 원 이상 차이가 날 수 있습니다. 특히 연간 주행거리가 긴 운전자라면 **K5 하이브리드 유지비**를 최우선으로 고려해야 합니다.</p>
+
+                <h4>2026년 K5 모델별 연간 예상 유지비 비교표 (예상치)</h4>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <caption>연간 15,000km 주행, 30대 운전자 기준 K5 유지비 비교</caption>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>K5 1.6 터보 (가솔린)</th>
+                                <th>K5 하이브리드 (가솔린)</th>
+                                <th>K5 LPG (LPi)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>차량 가격 (신차 기준)</td>
+                                <td>약 2,800만원</td>
+                                <td>약 3,200만원</td>
+                                <td>약 2,700만원</td>
+                            </tr>
+                            <tr>
+                                <td>공인 복합 연비</td>
+                                <td>13.0 km/L</td>
+                                <td>19.8 km/L</td>
+                                <td>10.0 km/L</td>
+                            </tr>
+                            <tr>
+                                <td>연간 유류비 (15,000km 기준)</td>
+                                <td>약 196만원</td>
+                                <td>약 128만원</td>
+                                <td>약 142만원</td>
+                            </tr>
+                            <tr>
+                                <td>연간 자동차세 (3년차 기준)</td>
+                                <td>290,000원</td>
+                                <td>290,000원</td>
+                                <td>290,000원</td>
+                            </tr>
+                            <tr>
+                                <td>자동차 보험료 (평균)</td>
+                                <td>700,000원</td>
+                                <td>750,000원</td>
+                                <td>650,000원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>총 연간 예상 유지비 (유류비+세금+보험료)</strong></td>
+                                <td><strong>약 295만원</strong></td>
+                                <td><strong>약 232만원</strong></td>
+                                <td><strong>약 236만원</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: right; font-size: 0.85em; color: #777;">*유류비 계산 기준: 가솔린 1,700원/L, LPG 950원/L로 가정. 보험료는 운전자 조건에 따라 상이함.</p>
+
+                <div class="info-box" style="margin-top: 50px; border-left: 6px solid var(--btn-cta);">
+                    <h4>📌 K5 장점과 단점 (내돈내산 후기 기반)</h4>
+                    <p><strong>K5 장점:</strong> 디자인 만족도가 높고, 동급 경쟁 모델 대비 옵션 구성이 뛰어납니다. K5 하이브리드 모델은 압도적인 연비로 기름값을 아끼려는 운전자에게 최고의 선택입니다.</p>
+                    <p><strong>K5 단점:</strong> 1.6 터보 모델의 DCT 변속기 이질감이나 2.0 모델의 다소 아쉬운 출력(초기 모델 기준)이 거론됩니다. 신형 K5는 이러한 단점들이 많이 보완되었지만, 중고차 구매 시에는 이 부분을 확인해야 합니다. K5 유지비 계산 시 **K5 단점**으로 인한 수리비용까지 예상해야 합니다.</p>
+                </div>
+
+                <h3>3. K5 세금 계산 및 절세 노하우: 연식별 세금 감면</h3>
+                <p>K5 자동차세는 배기량(CC)을 기준으로 산정됩니다. K5는 1.6L와 2.0L 모델이 주력이므로, 신차 기준으로 2.0L 모델이 1.6L 모델보다 세금이 더 높습니다. 그러나 자동차세는 차량 등록일로부터 3년차부터 매년 5%씩 감면되어 최대 50%까지 할인됩니다. K5 유지비 계산 시 연식별 세금 변화를 고려하여 장기적인 지출 계획을 세워야 합니다.</p>
+                <p><strong>K5 하이브리드 세금 혜택:</strong> K5 하이브리드 모델은 친환경차로 분류되어 구매 시 취득세 감면 혜택을 받을 수 있습니다. 이는 K5 하이브리드 모델의 초기 구매 비용을 절감하는 중요한 요소이며, K5 유지비 절약의 첫걸음입니다.</p>
+
+                <h3>4. K5 보험료 절약 팁: 다이렉트 비교와 할인 특약</h3>
+                <p>K5 유지비에서 보험료는 유류비 다음으로 큰 비중을 차지합니다. K5 보험료를 절약하는 가장 확실한 방법은 **다이렉트 자동차보험 비교**입니다. 일반 보험보다 평균 15% 이상 저렴하며, K5 모델의 특성에 맞는 할인 특약을 적용하면 추가 할인을 받을 수 있습니다.</p>
+                <ul>
+                    <li><strong>블랙박스 할인:</strong> K5에 블랙박스가 장착되어 있다면 보험료의 2~6% 할인이 가능합니다.</li>
+                    <li><strong>첨단 안전장치(ADAS) 할인:</strong> K5 최신 모델에 탑재된 차선이탈방지 보조, 전방 충돌방지 보조 시스템 등 첨단 안전장치 유무에 따라 3~10% 추가 할인이 적용됩니다.</li>
+                    <li><strong>마일리지(주행거리) 특약:</strong> 연간 주행거리가 짧다면 보험료를 환급받을 수 있습니다. K5 하이브리드 모델은 연비가 좋으므로 주행거리가 길어도 부담이 덜하지만, 주행거리가 짧은 경우 마일리지 특약을 꼭 활용해야 합니다.</li>
+                </ul>
+
+              
+                <p><strong>K5 유지비</strong> 절약을 위해 **다이렉트 자동차보험 비교**를 할 때는 여러 보험사의 **K5 보험료** 견적을 동시에 받아보는 것이 중요합니다. **네이버**나 **구글** 검색을 통해 관련 플랫폼을 이용하면 간편하게 비교가 가능합니다. 보험사별로 K5 모델의 손해율을 다르게 산정하므로, 동일 조건이라도 **K5 보험료**가 수십만 원 차이 날 수 있습니다.</p>
+
+                <h3>5. K5 정비 비용 분석: 1.6 터보 vs. 하이브리드 소모품 관리</h3>
+                <p>K5의 소모품 교체 주기는 일반적인 내연기관차와 크게 다르지 않지만, 모델별로 차이가 있습니다. **K5 1.6 터보** 모델은 터보 엔진의 특성상 엔진오일 교체 주기를 철저히 지켜야 하며, 미세한 떨림이나 소음이 발생할 경우 즉시 점검이 필요합니다. 반면 **K5 하이브리드** 모델은 엔진 가동률이 낮아 엔진오일 교체 주기를 길게 가져갈 수 있으며, 회생 제동 시스템 덕분에 브레이크 패드 마모도 일반 모델보다 적습니다.</p>
+                <p>다만 K5 하이브리드 모델은 고전압 배터리에 대한 점검이 필요하며, K5 유지비 계산 시 장기적으로 배터리 교체 비용을 고려해야 합니다. 최근 기술 발전으로 배터리 수명이 길어지고 있으며, 제조사 보증 기간도 충분히 길기 때문에 큰 걱정은 없으나 **K5 하이브리드** 모델을 오래 탈 계획이라면 이 부분을 염두에 두어야 합니다.</p>
+                <p>K5 유지비 중 정비 비용을 절감하기 위해서는 K5 **전문 업체**나 **수입차 정비소**를 찾는 것도 좋습니다. **내돈내산 후기**를 참고하여 합리적인 가격에 정비 서비스를 제공하는 곳을 선택할 수 있습니다.</p>
+                <div style="clear: both;"></div>
+
+                <h3>함께 많이 찾는 연관 키워드 (K5 유지비 검색 패턴 분석)</h3>
+                <p>사용자들이 'K5 유지비'와 함께 검색하는 주요 키워드들입니다. **네이버** 검색의 연관 검색어 패턴을 분석하여 K5를 고려하는 소비자들이 어떤 정보를 필요로 하는지 알 수 있습니다.</p>
+                <ul class="keyword-list">
+                    <li>#K5 유지비</li>
+                    <li>#K5 장단점</li>
+                    <li>#K5 하이브리드 유지비</li>
+                    <li>#K5 1.6 터보 유지비</li>
+                    <li>#K5 연비</li>
+                    <li>#K5 보험료</li>
+                    <li>#K5 세금</li>
+                    <li>#K5 중고차 유지비</li>
+                    <li>#K5 LPi 유지비</li>
+                    <li>#K5 K8 유지비 비교</li>
+                    <li>#K5 vs 소나타 유지비 비교</li>
+                    <li>#K5 가솔린 유지비</li>
+                    <li>#K5 1년 유지비</li>
+                    <li>#K5 유지비 평균</li>
+                    <li>#K5 유지비 금액</li>
+                    <li>#K5 유지비 계산기</li>
+                    <li>#K5 유지비 저렴한곳</li>
+                    <li>#K5 내돈내산 후기</li>
+                    <li>#K5 시그니처 유지비</li>
+                    <li>#K5 싼곳</li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: #fff;" id="2026-tip">
+            <div class="container">
+                <h2>📊 2026년 K5 유지비 심층 분석: K-패스 특약과 UBI 보험료 할인</h2>
+                
+                <p>
+                    2026년 자동차 시장은 **정책적 변화**와 **기술적 변화**로 인해 K5 유지비에도 영향을 미칠 수 있습니다. 특히 보험료를 절약할 수 있는 새로운 할인 특약들이 등장하고 있어, **K5 유지비**를 고려하는 예비 구매자나 기존 오너들은 이 정보를 놓쳐서는 안 됩니다.
+                </p>
+                
+                <h3>1. 대중교통 이용 연계 할인 (K-패스 특약)</h3>
+                <p>
+                    2026년부터 도입 예정인 **K-패스 이용자 특약**은 K5 유지비 절약에 새로운 기회를 제공합니다. 국토교통부와 협력하여 대중교통 이용 실적에 따라 보험료를 할인해 주는 이 특약은, 출퇴근 시 대중교통을 병행하는 운전자에게 특히 유리합니다. K5 하이브리드 모델을 소유하며 대중교통을 자주 이용하는 경우, 주유비 절약과 보험료 할인 혜택을 동시에 누릴 수 있어 **K5 유지비** 절약 효과가 극대화됩니다. 이 특약은 **다이렉트자동차보험** 채널에서 주로 제공될 예정이므로, K5 보험 가입 시 **K-패스** 이용 여부를 반드시 확인해야 합니다.
+                </p>
+
+                <h3>2. 안전운전 습관 연계 할인 (UBI 특약)</h3>
+                <p>
+                    K5 운전자의 운전 습관에 따라 보험료를 할인해 주는 **UBI(Usage-Based Insurance) 특약**은 이제 필수적인 할인 항목입니다. Tmap이나 카카오내비 같은 내비게이션 앱의 안전운전 점수를 활용하여, K5 운전자가 급가속, 급제동 없이 안전운전을 했을 경우 **최대 12%까지** 할인받을 수 있습니다. K5를 운전하는 동안 안전운전 습관을 유지하는 것은 사고 위험을 줄일 뿐만 아니라 **K5 유지비** 절약에도 직결되는 중요한 요소입니다.
+                </p>
+
+                <h3>3. K5 모델별 손해율 변화</h3>
+                <p>
+                    K5는 판매량이 많은 인기 모델이므로 보험사 입장에서 손해율 관리가 중요합니다. K5 하이브리드 모델의 경우, 일반 가솔린 모델 대비 사고 시 수리비가 높을 수 있다는 인식이 있지만, 최근에는 기술 발전과 부품 수급의 안정화로 인해 손해율이 안정화되는 추세입니다. 보험사별 **K5 보험료** 견적을 비교할 때, K5 모델의 특성(배기량, 하이브리드 여부)이 보험료에 어떻게 반영되는지 면밀히 살펴봐야 합니다. **K5 유지비 계산**을 할 때 보험사별 차이가 수십만원까지 발생하므로 반드시 비교해야 합니다.
+                </p>
+
+                <div class="info-box" style="margin-top: 50px; background-color: var(--bg-highlight);">
+                    <h4>📌 AI 및 빅데이터 활용 K5 유지비 예측</h4>
+                    <p>
+                        최근 **제미나이(Gemini)**나 **ChatGPT**와 같은 **AI** 모델들은 방대한 데이터를 기반으로 **K5 유지비** 예측에 활용될 수 있습니다. AI는 수많은 K5 오너들의 **내돈내산 후기**나 정비 기록, 주행 패턴 데이터를 분석하여 K5의 장단점을 파악하고, 개인 맞춤형 유지비 절약 방안을 제시하는 데 도움을 줄 수 있습니다. **구글**이나 **네이버** 검색을 넘어 AI 기반의 정보를 활용하는 것은 미래의 K5 유지비 관리 방법이 될 것입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="deep-dive">
+            <div class="container">
+                <h2>🔎 K5 모델별 심층 분석: K5 하이브리드 vs. 1.6 터보 vs. LPi 장단점 비교</h2>
+                <p>
+                    K5는 다양한 파워트레인을 제공하여 소비자의 선택지가 넓습니다. 하지만 모델 선택에 따라 K5 유지비는 물론 운전 경험까지 크게 달라집니다. K5 구매를 고민하는 분들을 위해, 각 모델의 특징과 K5 유지비 관점에서 본 장단점을 심층적으로 분석합니다.
+                </p>
+
+                <h3>1. K5 1.6 터보: 다이나믹한 성능과 K5 유지비의 딜레마</h3>
+                <p>
+                    K5 1.6 터보 모델은 우수한 주행 성능과 세련된 디자인으로 젊은 층에게 인기가 높습니다. 180마력의 출력과 27.0kgf·m의 토크는 K5를 운전하는 재미를 선사합니다. 그러나 K5 유지비 관점에서는 몇 가지 고려해야 할 단점이 있습니다.
+                </p>
+                <img src="https://images.pexels.com/photos/17061352/pexels-photo-17061352/free-photo-of-road-car-vehicle-kia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="K5 주행 이미지" class="content-image-left">
+                <ul>
+                    <li><strong>연비와 유류비:</strong> K5 1.6 터보는 2.0 가솔린 모델보다 연비가 다소 높지만, 하이브리드 모델과 비교하면 유류비 지출이 큽니다. 특히 고속 주행 시에는 터보 엔진의 특성상 연비 하락폭이 클 수 있습니다.</li>
+                    <li><strong>정비 비용:</strong> 터보 엔진은 일반 자연흡기 엔진보다 엔진오일 관리와 터보차저 관련 부품 관리에 더 신경 써야 합니다. K5 유지비 중 정비 항목에서 소모품 교체 주기를 철저히 지키지 않으면 장기적으로 큰 수리 비용이 발생할 수 있습니다.</li>
+                    <li><strong>변속기 (DCT):</strong> 일부 K5 1.6 터보 모델에 적용된 듀얼 클러치 변속기(DCT)는 빠른 변속을 자랑하지만, 저속에서 꿀렁임이나 변속 충격이 발생할 수 있습니다. **내돈내산 후기**를 보면 DCT에 대한 호불호가 갈리는 편이며, 장기적인 **K5 단점**으로 지적되기도 합니다.</li>
+                </ul>
+                <div style="clear: both;"></div>
+
+                <h3>2. K5 하이브리드: 최고의 연비와 K5 유지비 절약의 대명사</h3>
+                <p>
+                    K5 하이브리드는 **K5 유지비** 절약을 최우선으로 생각하는 운전자에게 가장 합리적인 선택지입니다. K5 하이브리드 모델은 압도적인 연비로 K5 유지비 중 가장 큰 비중을 차지하는 유류비를 획기적으로 줄여줍니다.
+                </p>
+                <ul>
+                    <li><strong>연비와 유류비:</strong> 공인 연비가 19.8 km/L에 달하며, 실제 주행에서는 20 km/L를 상회하는 경우가 많습니다. 연간 15,000km 주행 기준으로 1.6 터보 모델 대비 연간 50만원 이상의 유류비 절감 효과를 볼 수 있습니다.</li>
+                    <li><strong>세금 및 공영주차장 할인:</strong> K5 하이브리드 모델은 취득세 감면 혜택을 받을 수 있으며, 공영주차장 주차료 할인 혜택까지 받을 수 있습니다. 이는 K5 유지비를 다각도로 절감해주는 요소입니다.</li>
+                    <li><strong>K5 단점 (하이브리드):</strong> 일반 모델 대비 다소 높은 초기 구매 가격과 배터리 관리 필요성입니다. 하지만 장기적으로 보면 절감되는 유류비와 혜택을 고려했을 때, 초기 비용 차이를 상쇄하고도 남는 경우가 많습니다.</li>
+                </ul>
+
+                <h3>3. K5 LPi (LPG): 저렴한 유가와 K5 유지비</h3>
+                <p>
+                    K5 LPi 모델은 LPG 가격이 가솔린의 절반 수준이므로 유류비 부담이 적습니다. K5 유지비 중 유류비 항목에서 하이브리드 모델과 비교해도 경쟁력이 있는 수준입니다.
+                </p>
+                <ul>
+                    <li><strong>유류비:</strong> LPG 가격이 가솔린보다 저렴하여 주유 시 체감되는 부담이 적습니다. 특히 장거리 운전이 잦은 영업용 차량이나 택시로 K5가 많이 선택되는 이유입니다.</li>
+                    <li><strong>성능:</strong> K5 LPi 모델은 상대적으로 출력이 낮아 다이나믹한 운전을 선호하는 운전자에게는 **K5 단점**으로 작용할 수 있습니다.</li>
+                    <li><strong>장착 비용 및 충전 인프라:</strong> 일반 가솔린 차량을 LPG로 개조하는 경우 초기 비용이 발생하며, LPG 충전소 인프라가 가솔린 주유소보다 적다는 점을 고려해야 합니다.</li>
+                </ul>
+
+                <h4>K5 모델별 유지비 비교 결론</h4>
+                <p><strong>K5 유지비</strong>를 종합적으로 고려할 때, **K5 하이브리드**가 압도적으로 유리합니다. 높은 연비와 세금 혜택으로 K5 유지비를 최소화할 수 있습니다. 만약 주행 성능을 중요하게 생각한다면 **K5 1.6 터보** 모델을 선택하되, **다이렉트자동차보험**을 통한 보험료 할인과 정기적인 소모품 관리에 신경 써야 합니다. K5 LPG 모델은 초기 비용이 저렴하고 유가가 낮지만, 성능과 충전 편의성을 고려해야 합니다.</p>
+            </div>
+        </section>
+
+        <section class="content-section" id="faq-section">
+            <div class="container">
+                <h2>자주 묻는 질문 (FAQ) | K5 유지비 핵심 Q&A</h2>
+                <div class="faq-item active">
+                    <h3 id="q1">K5 유지비 중 'K5 연비'가 실제로 중요한가요?<span class="toggle-icon">+</span></h3>
+                    <p>
+                        네, K5 유지비에서 **K5 연비**는 가장 중요한 요소 중 하나입니다. 연간 주행거리가 15,000km인 운전자를 기준으로 K5 1.6 터보 모델과 K5 하이브리드 모델의 유류비를 비교하면 연간 약 50만원 이상의 차이가 발생할 수 있습니다. K5를 장기간 운행할 경우, 이 금액 차이는 누적되어 차량 가치를 넘어서는 비용이 될 수 있습니다. **K5 유지비 계산** 시 자신의 연간 주행거리를 정확하게 파악하여 모델을 선택해야 합니다.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 id="q2">K5 중고차를 구매할 경우 유지비는 어떻게 달라지나요?<span class="toggle-icon">+</span></h3>
+                    <p>
+                        K5 중고차를 구매하면 신차 대비 감가상각 비용이 낮아지지만, 정비 비용과 보험료가 상승할 수 있습니다. 연식이 오래된 K5는 자동차세가 감면되지만, 소모품 교체 주기가 도래하여 **K5 정비 비용**이 늘어날 수 있습니다. 특히 K5의 고질적인 **단점**이나 문제점(예: 초기 모델의 GDI 엔진 카본 누적)이 발생할 경우 수리비용이 예상보다 많이 들 수 있으므로, 중고차 구매 전 반드시 전문 업체에서 차량 상태를 점검해야 합니다.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 id="q3">K5 보험료를 절약하는 가장 효율적인 방법은 무엇인가요?<span class="toggle-icon">+</span></h3>
+                    <p>
+                        K5 보험료를 절약하는 가장 효율적인 방법은 **다이렉트 자동차보험 비교조회**입니다. 저희와 같은 전문 비교 플랫폼을 이용하면 K5 모델에 대한 여러 보험사의 견적을 실시간으로 비교할 수 있습니다. K5는 대중적인 모델이므로, 보험사마다 K5 모델의 손해율을 다르게 산정하여 보험료 **차이점**이 발생합니다. 또한, K5에 적용 가능한 **마일리지 특약**, **첨단 안전장치 할인 특약** 등을 꼼꼼히 체크하여 **K5 보험료**를 최소화해야 합니다.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 id="q4">K5 vs 소나타, 유지비 차이가 큰가요?<span class="toggle-icon">+</span></h3>
+                    <p>
+                        K5와 소나타는 플랫폼을 공유하는 형제차로, 기본적으로 K5 유지비와 소나타 유지비는 크게 다르지 않습니다. 연비, 자동차세, 부품 가격 등 대부분의 항목이 유사합니다. 다만, K5 모델의 디자인 선호도가 높아 보험사별로 K5 모델의 보험료 산정 기준이 소폭 다를 수 있습니다. K5 vs 소나타를 고민한다면, 유지비보다는 디자인 선호도나 옵션 구성, **내돈내산 후기** 등을 통해 자신에게 맞는 차종을 선택하는 것이 합리적입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-highlight); padding: 40px 0;">
+            <div class="container">
+                <h2 style="margin-bottom: 30px;">공신력 있는 K5 유지비 관련 외부 정보 (신뢰도 확보)</h2>
+                <div class="external-links">
+                    <p style="font-weight: 500; font-size: 1.1em; color: var(--primary-color);">K5 유지비, 세금, 정책 관련 공신력 있는 기관의 정보를 참고하세요.</p>
+                    <ul>
+                        <li><a href="https://www.kia.com/" target="_blank">기아자동차 공식 홈페이지</a></li>
+                        <li><a href="https://www.kidi.or.kr/" target="_blank">보험개발원 (K5 차량 모델 등급 확인)</a></li>
+                        <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (자동차보험 가입 정보)</a></li>
+                        <li><a href="https://www.car.go.kr/" target="_blank">자동차민원 대국민 포털 (자동차 등록 정보)</a></li>
+                        <li><a href="https://namu.wiki/w/%EA%B8%B0%EC%95%84%20K5" target="_blank">나무위키 - 기아 K5</a></li>
+                        <li><a href="https://www.molit.go.kr/" target="_blank">국토교통부 (K-패스 및 차량 정책 정보)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                // 현재 열린 항목 닫기 (하나만 열리게 하려면)
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== parent && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 폼 제출 시 유효성 검사 (체류시간 연장 및 품질 개선)
+        document.querySelector('.compare-form-box form').addEventListener('submit', function(e) {
+            const requiredInputs = this.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            requiredInputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.style.borderColor = 'red';
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('필수 입력 항목을 모두 채워주세요.');
+            } else {
+                e.preventDefault();
+                alert('K5 유지비 견적 요청이 접수되었습니다! 잠시 후 상세 분석 결과를 확인하실 수 있습니다.');
+                // 실제 환경에서는 AJAX 통신 후 결과 페이지로 리다이렉션
+                // this.submit();
+            }
+        });
+    </script>
+  
